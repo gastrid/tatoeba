@@ -8,14 +8,10 @@ class DesignColours extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colours = [
-      ["backgroundColor", Theme.of(context).backgroundColor],
-      ["bottomAppBarColor", Theme.of(context).bottomAppBarColor],
-      ["canvasColor", Theme.of(context).canvasColor],
       ["cardColor", Theme.of(context).cardColor],
       ["dialogBackgroundColor", Theme.of(context).dialogBackgroundColor],
       ["disabledColor", Theme.of(context).disabledColor],
       ["dividerColor", Theme.of(context).dividerColor],
-      ["errorColor", Theme.of(context).errorColor],
       ["focusColor", Theme.of(context).focusColor],
       ["highlightColor", Theme.of(context).highlightColor],
       ["hintColor", Theme.of(context).hintColor],
@@ -26,11 +22,20 @@ class DesignColours extends StatelessWidget {
       ["primaryColorLight", Theme.of(context).primaryColorLight],
       ["scaffoldBackgroundColor", Theme.of(context).scaffoldBackgroundColor],
       ["secondaryHeaderColor", Theme.of(context).secondaryHeaderColor],
-      ["selectedRowColor", Theme.of(context).selectedRowColor],
       ["shadowColor", Theme.of(context).shadowColor],
       ["splashColor", Theme.of(context).splashColor],
-      ["toggleableActiveColor", Theme.of(context).toggleableActiveColor],
       ["unselectedWidgetColor", Theme.of(context).unselectedWidgetColor],
+      ["canvasColor", Theme.of(context).canvasColor],
+      ["primary", Theme.of(context).colorScheme.primary],
+      ["onPrimary", Theme.of(context).colorScheme.onPrimary],
+      ["secondary", Theme.of(context).colorScheme.secondary],
+      ["onSecondary", Theme.of(context).colorScheme.onSecondary],
+      ["error", Theme.of(context).colorScheme.error],
+      ["onError", Theme.of(context).colorScheme.onError],
+      ["background", Theme.of(context).colorScheme.background],
+      ["onBackground", Theme.of(context).colorScheme.onBackground],
+      ["surface", Theme.of(context).colorScheme.surface],
+      ["onSurface", Theme.of(context).colorScheme.onSurface],
     ];
     final deviceSize = MediaQuery.of(context).size;
     return Scaffold(
@@ -47,10 +52,15 @@ class DesignColours extends StatelessWidget {
             itemCount: colours.length,
             itemBuilder: ((context, index) {
               return Container(
-                height: 30,
+                height: 60,
                 key: Key(index.toString()),
                 color: colours[index][1] as Color,
-                child: Text(colours[index][0] as String),
+                child: Column(
+                  children: [
+                    Text(colours[index][0] as String),
+                    Text((colours[index][1] as Color).opacity.toString()),
+                  ],
+                ),
               );
             }),
           )

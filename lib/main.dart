@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // For rootBundle
+import 'dart:convert'; // For jsonDecode
+import 'package:json_theme/json_theme.dart';
 import 'package:tatoeba_trainer/providers/db_provider.dart';
 import 'package:tatoeba_trainer/screens/design_colours.dart';
 import 'package:tatoeba_trainer/screens/design_texts.dart';
@@ -9,15 +12,20 @@ import 'package:provider/provider.dart';
 const russian = "russian";
 const chinese = "chinese";
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final themeStr = await rootBundle.loadString('assets/theme/appainter_theme.json');
+  final themeJson = jsonDecode(themeStr);
+  final theme = ThemeDecoder.decodeThemeData(themeJson)!;
+  runApp(MyApp(theme: theme));
 }
 
 // rgba(13,112,223,255)
 // red: rgba(232,102,102,255)
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  final ThemeData theme;
+  const MyApp({Key? key, required this.theme}) : super(key: key);
+  
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -29,16 +37,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Tatoeba trainer',
-        theme: ThemeData(
-          colorSchemeSeed: Color.fromARGB(255,13,112,223),
-          fontFamily: "NunitoSans",
-          textTheme: TextTheme(
-            titleMedium: TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-            
-          )
-          ),
+        theme: theme,
         home: const LanguagePicker(),
         routes: {
           ModePicker.chineseRoute: (ctx) => ModePicker(language: ModePicker.chinese),
@@ -50,8 +49,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
 
 
   

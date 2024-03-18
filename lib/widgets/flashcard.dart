@@ -35,7 +35,7 @@ class _FlashcardState extends State<Flashcard> {
         direction: FlipDirection.VERTICAL,
         front: ReusableCard(text: widget.sentence.source.sentence),
         back: ReusableCard(
-          text: widget.sentence.target.sentence,
+          text: widget.sentence.target.sentence.trim(),
           pinyin: widget.isChinese
               ? PinyinHelper.getPinyin(widget.sentence.target.sentence,
                   format: PinyinFormat.WITH_TONE_MARK)

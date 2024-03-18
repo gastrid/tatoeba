@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tatoeba_trainer/providers/db_provider.dart';
 import 'package:tatoeba_trainer/screens/design_texts.dart';
+import 'package:tatoeba_trainer/screens/design_colours.dart';
 import 'package:tatoeba_trainer/screens/new_sentences.dart';
 import 'package:provider/provider.dart';
 import 'package:tatoeba_trainer/screens/saved_sentences.dart';
@@ -96,7 +97,7 @@ class _ModePickerState extends State<ModePicker> {
                     height: 20,
                   ),
                   Text("Pick a mode",
-                      style: Theme.of(context).textTheme.displayLarge),
+                      style: Theme.of(context).textTheme.displayMedium,),
                   SizedBox(
                     height: 20,
                   ),
@@ -146,6 +147,22 @@ class _ModePickerState extends State<ModePicker> {
                     ),
                     icon: Icon(Icons.autorenew),
                     label: Text("Design fonts"),
+                  ),
+                                    SizedBox(
+                    height: 20,
+                  ),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).push<void>(MaterialPageRoute(
+                          builder: ((context) =>
+                              DesignColours())));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: Size(150, 0),
+                      padding: EdgeInsets.all(10.0),
+                    ),
+                    icon: Icon(Icons.autorenew),
+                    label: Text("Design colours"),
                   ),
                 ],
               ));

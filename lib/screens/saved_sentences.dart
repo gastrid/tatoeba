@@ -83,6 +83,7 @@ class _SavedSentencesState extends State<SavedSentences> {
                 selector: (_, db) => db.saved_sentence_count,
                 builder: (context, value, child) {
                   return ListView.builder(
+                    
                   controller: controller,
                   shrinkWrap: true,
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
@@ -93,8 +94,6 @@ class _SavedSentencesState extends State<SavedSentences> {
                       final saved_sentences =
                           Provider.of<DbProvider>(context, listen: false).saved_sentences;
                       final sentence = saved_sentences[index];
-                      // return ListTile(title: 
-                      // Text(sentence.source.sentence));
                       return PairRow(sourceSentence: sentence.source.sentence, targetSentence: sentence.target.sentence, language: widget.language);
                     } else {
                       return _hasMore ? const Padding(
