@@ -78,18 +78,6 @@ class _FlashcardScrollerState3 extends State<FlashcardScroller>
             child: GestureDetector(
               child: Column(
                 children: [
-                  Text("Question ${_index+1} of $_deckLength completed"),
-                  SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: LinearProgressIndicator(
-                      backgroundColor: Colors.white,
-                      valueColor: AlwaysStoppedAnimation(Colors.pinkAccent),
-                      minHeight: 5,
-                      value: _progressValue, // TODO: change
-                    ),
-                  ),
-                  SizedBox(height: 30),
                   Expanded(
                       child: CarouselSlider.builder(
                         itemCount: _deckLength,
@@ -117,7 +105,16 @@ class _FlashcardScrollerState3 extends State<FlashcardScroller>
                         ),
                       )
                   ),
-                  SizedBox(height: 40),
+                  Text("Question ${_index+1} of $_deckLength completed"),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: LinearProgressIndicator(
+                      backgroundColor: Colors.white,
+                      valueColor: AlwaysStoppedAnimation(Colors.pinkAccent),
+                      minHeight: 5,
+                      value: _progressValue, // TODO: change
+                    ),
+                  ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[

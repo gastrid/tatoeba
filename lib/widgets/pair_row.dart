@@ -27,16 +27,17 @@ class PairRow extends StatelessWidget {
     print(targetSentence);
     print(sourceSentence);
 
+    
+
     final theme = Theme.of(context);
 
     final deviceSize = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
-      decoration: BoxDecoration(
-        color: theme.highlightColor,
-      ),
+    return 
+    Container(
+      margin: EdgeInsets.only(left: 10, top: 5, right: 10, bottom: 5),
       child: ListTile(
-        tileColor: theme.cardColor,
+        tileColor: theme.focusColor,
+        onTap: () {},
         title: Padding(
           padding: const EdgeInsets.only(bottom: 5),
           child: Text(
@@ -71,7 +72,9 @@ class PairRow extends StatelessWidget {
                   Text(
                     pinyin,
                     style: theme.textTheme.titleLarge!.copyWith(
-                        color: theme.hintColor),
+                        color: theme.hintColor,
+                        fontWeight: FontWeight.normal
+                        ),
                   )
                 ],
               ),
