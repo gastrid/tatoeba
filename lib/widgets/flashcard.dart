@@ -8,6 +8,7 @@ import 'package:lpinyin/lpinyin.dart';
 import '../models/flashcardSentence.dart';
 
 class Flashcard extends StatefulWidget {
+
   const Flashcard(
       {Key? key,
       required FlashcardSentence this.sentence,

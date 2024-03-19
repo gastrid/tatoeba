@@ -13,6 +13,12 @@ class LanguagePicker extends StatelessWidget {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    Text buttonText(String text) {
+      return Text(text,
+          textAlign: TextAlign.center, style: TextStyle(fontSize: 20));
+    }
+
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -37,41 +43,49 @@ class LanguagePicker extends StatelessWidget {
                       },
                       style: ButtonStyle(
                         padding:
-                            MaterialStateProperty.all(EdgeInsets.all(10.0)),
+                            MaterialStateProperty.all(EdgeInsets.all(20.0)),
                       ),
-                      child: Column(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Image.asset(
-                              "assets/images/russian-flag.jpeg",
-                              width: image_width,
-                            ),
+                          Container(
+                            height: 100,
+                            width: 100,
+                            margin: EdgeInsets.only(right: 20),
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(shape: BoxShape.circle),
+                            child:
+                                Image.asset("assets/images/russian-flag.jpeg",
+                                    // width: image_width,
+                                    alignment: Alignment.bottomLeft,
+                                    fit: BoxFit.cover),
                           ),
-                          Text("Russian")
+                          buttonText("Russian")
                         ],
                       )),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
                   ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).pushNamed("/chinese");
                       },
                       style: ButtonStyle(
                         padding:
-                            MaterialStateProperty.all(EdgeInsets.all(10.0)),
+                            MaterialStateProperty.all(EdgeInsets.all(20.0)),
                       ),
-                      child: Column(
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Image.asset(
-                              "assets/images/chinese-flag.png",
-                              width: image_width,
-                            ),
+                          Container(
+                            height: 100,
+                            width: 100,
+                            margin: EdgeInsets.only(right: 20),
+                            clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(shape: BoxShape.circle),
+                            child: Image.asset("assets/images/chinese-flag.png",
+                                // width: image_width,
+                                alignment: Alignment.bottomLeft,
+                                fit: BoxFit.cover),
                           ),
-                          Text("Chinese")
+                          buttonText("Chinese")
                         ],
                       )),
                   SizedBox(
